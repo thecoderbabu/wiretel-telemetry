@@ -1,0 +1,17 @@
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
+/.idea/wiretel-telemetry.iml
+/.idea/.gitignore
+/local_config.py
+/out_16_7_2023_14155.csv
+/out_16_7_2023_141933.csv
+/out_17_7_2023_212255.csv
+/out_16_7_2023_2059.csv
+/output/out-nov.csv
+/output/outsep-oct.csv
+/output
+__pycache__/
+*.py[cod]
+*$py.class
