@@ -24,9 +24,9 @@ def convert_to_gb(list_of_usage):
     gb = []
     mb = []
     bts = []
-    gb_pattern = "(\d+) GB"
-    mb_pattern = "(\d+) MB"
-    bts_pattern = "(\d+) Bytes"
+    gb_pattern = r"(\d+) GB"
+    mb_pattern = r"(\d+) MB"
+    bts_pattern = r"(\d+) Bytes"
 
     for usage in list_of_usage:
         gb_match = re.search(gb_pattern, usage)
@@ -76,8 +76,8 @@ if not args.force:
         currentMinute = datetime.now().minute
         currentHour = datetime.now().hour
         file_name = f"out_{currentDay}_{currentMonth}_{currentYear}_{currentHour}{currentMinute}{currentSecond}.csv"
-
-        with open(os.path.join(cwd, 'output', file_name), "w", newline="") as f:
+        file_absolute_path = os.path.join(cwd, 'output', file_name)
+        with open(file_absolute_path, "w", newline="") as f:
             writer = csv.writer(f, quoting=csv.QUOTE_ALL)
             writer.writerows(list1)
         chrome.close()
@@ -95,7 +95,7 @@ if not args.force:
         my_email = config.SENDER_EMAIL
 
         subject = f"Wiretel Data Usage : {(total_download + total_upload):.2f} GB"
-        send_mail(my_email, to_emails, subject, content)
+        send_mail(my_email, to_emails, subject, content, file_absolute_path, file_name)
 
     except InvalidTagForAuthorError as e:
         print(e)
